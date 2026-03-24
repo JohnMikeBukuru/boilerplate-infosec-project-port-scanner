@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Challenge Results</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="header">
+        <div>
+          <div class="logo">
+            <img src="./logo.png" />
+
+            
+            <h1>Port Scanner — Results</h1>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn" id="btnRefresh" type="button">Refresh</button>
+
+          <label class="toggle">
+            <input id="autoRefresh" type="checkbox" checked />
+            <span>Auto refresh</span>
+          </label>
+
+          <select id="interval" class="select" title="Refresh interval">
+            <option value="2000">2s</option>
+            <option value="3000" selected>3s</option>
+            <option value="5000">5s</option>
+            <option value="10000">10s</option>
+          </select>
+        </div>
+      </header>
+
+      <main class="grid">
+        <!-- LEFT COLUMN -->
+        <section class="col left">
+          <section class="card" id="statusCard">
+            <div class="status-row">
+              <div class="status-left">
+                <div class="pill" id="pillOverall">—</div>
+                <div class="counts">
+                  <div class="count">
+                    <span class="label">Passed</span>
+                    <span class="value" id="passedCount">—</span>
+                  </div>
+                  <div class="count">
+                    <span class="label">Failed</span>
+                    <span class="value" id="failedCount">—</span>
+                  </div>
+                  <div class="count">
+                    <span class="label">Total</span>
+                    <span class="value" id="totalCount">—</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="status-right">
+                <div class="progress">
+                  <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <div class="muted small" id="timestamp">—</div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="toolbar">
+              <div class="tabs" role="tablist">
+                <button class="tab active" data-filter="all" type="button">All</button>
+                <button class="tab" data-filter="failed" type="button">Failed</button>
+                <button class="tab" data-filter="passed" type="button">Passed</button>
+              </div>
+
+              <input
+                id="search"
+                class="input"
+                type="search"
+                placeholder="Search tests…"
+                autocomplete="off"
+              />
+            </div>
+          </section>
+
+          <section class="card">
+            <div id="list" class="list"></div>
+          </section>
+        </section>
+
+        <!-- RIGHT COLUMN -->
+        <section class="col right">
+          <section class="card stdout-card">
+            <div class="stdout-head">
+              <h2>Command output (stdout)</h2>
+            </div>
+            <pre class="stdout" id="stdout"></pre>
+          </section>
+
+          <footer class="footer muted">
+            Web4Jobs Development Environment
+          </footer>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
